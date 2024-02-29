@@ -1,25 +1,32 @@
+// import React from 'react'
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import Chart from '../chart/Chart';
+import { useGlobalContext } from '../../context/globalContext';
+import History from '../History/History';
+import { InnerLayout } from '../../styled/Layout';
+import { rupee } from '../../utils/Icons';
 
 
 
 
-function Dashboard() {
-  // const {totalExpenses,incomes, expenses, totalIncome, getIncomes, getExpenses,totalBalance } = useGlobalContext()
+function ViewTransaction() {
+    const {totalExpenses,incomes, expenses, totalIncome, getIncomes, getExpenses,totalBalance } = useGlobalContext()
 
-  // useEffect(() => {
-  //     getIncomes()
-  //     getExpenses()
-  // }, [])
+  useEffect(() => {
+      getIncomes()
+      getExpenses()
+  }, [])
 
   return (
-    <DashboardStyled>
-      <Chart/>
-        {/* <InnerLayout>
-            <h1>All Transation</h1>
+    // <div>hello</div>
+    <Container>
+        <Title>
+            All Transaction
+        </Title>
+        <InnerLayout>
             <div className='stats-con'>
               <div className='chart-con'>
+                 {/* <Chart/> */}
                  <div className='amount-container'>
                             <div className="income">
                                 <h3>Total Income</h3>
@@ -45,18 +52,16 @@ function Dashboard() {
                 <History/>
               </div>
             </div>
-        </InnerLayout> */}
-    </DashboardStyled>
+        </InnerLayout>
+    </Container>
+
   )
 }
-
-const DashboardStyled = styled.div`
-/* .chart-con{
-  display:flex;
-  gap: 2rem
-} */
+const Container =  styled.div`
+/* margin-top:10%; */
 width:100%;
 height:100%;
+
 .stats-con{
   display:grid;
   grid-template-columns:repeat(5,1fr);
@@ -79,5 +84,10 @@ height:100%;
   justify-content:center;
   text-align:center;
 }
-`;
-export default Dashboard
+
+`
+
+const Title =  styled.h1`
+margin :20px;
+`
+export default ViewTransaction

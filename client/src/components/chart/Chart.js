@@ -59,14 +59,28 @@ function Chart() {
             }
         ]
     }
-
+   
 
     return (
         <ChartStyled >
-            <Line data={data} />
+            {/* <Line data={data} /> */}
+            <iframe style={{background: '#F1F5F4',
+            border: 'none',borderRadius: '2px',boxShadow: '0 2px 10px 0 rgba(70, 76, 79, .2)',width: '100%', height: '100%'}}  src="https://charts.mongodb.com/charts-storemanager-xkctr/embed/dashboards?id=542d5165-bf2d-4e02-9f46-df41649d4db3&theme=light&autoRefresh=true&maxDataAge=60&showTitleAndDesc=false&scalingWidth=fixed&scalingHeight=fixed"></iframe>
+            {/* <iframe style={{background: '#FFFFFF', border: 'none', borderRadius: '2px',boxShadow: '0 2px 10px 0 rgba(70, 76, 79, .2)', width:'640', height:'480'}} src="https://charts.mongodb.com/charts-storemanager-xkctr/embed/charts?id=65df1ac2-4a68-49a9-8377-ce9759b0c584&maxDataAge=3600&theme=light&autoRefresh=true"></iframe> */}
+
         </ChartStyled>
     )
 }
+
+// const Graph = styled.iframe`
+// background: #F1F5F4;
+// border: none;
+// border-radius: 2px;
+// box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);
+// width: 100vw;
+// height: 100vh;
+// src: "https://charts.mongodb.com/charts-storemanager-xkctr/embed/dashboards?id=542d5165-bf2d-4e02-9f46-df41649d4db3&theme=light&autoRefresh=true&maxDataAge=60&showTitleAndDesc=false&scalingWidth=fixed&scalingHeight=fixed";
+// `
 
 const ChartStyled = styled.div`
     background: #FCF6F9;
@@ -75,6 +89,7 @@ const ChartStyled = styled.div`
     padding: 1rem;
     border-radius: 20px;
     height: 100%;
+    /* width:100% */
     /* width:75% */
 `;
 

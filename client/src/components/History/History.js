@@ -1,38 +1,73 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useGlobalContext } from '../../context/globalContext'
+import IncomeItem from '../incomeitem/incomeitem'
 
 function History() {
-    const {transactionHistory} = useGlobalContext()
+    const {transactionHistory , deleteExpense , deleteIncome} = useGlobalContext()
 
     const [...history] = transactionHistory()
 
-    return (
-        <HistoryStyled>
-            <h2>Recent History</h2>
-            {history.map((item) =>{
-                const {_id, title, amount, type} = item
-                return (
-                    <div key={_id} className="history-item">
-                        <p style={{
-                            color: type === 'expense' ? 'red' : 'var(--color-green)'
-                        }}>
-                            {title}
-                        </p>
+    
 
-                        <p style={{
-                            color: type === 'expense' ? 'red' : 'var(--color-green)'
-                        }}>
-                            {
-                                type === 'expense' ? `-${amount <= 0 ? 0 : amount}` : `+${amount <= 0 ? 0: amount}`
-                            }
-                        </p>
+    // function History() {
+    //     const {transactionHistory} = useGlobalContext()
+    
+    //     const [...history] = transactionHistory()
+    
+        return (
+         
+    
+            <HistoryStyled>
+                        <div className="info">
+                        {history.map((item) => {
+                            const {_id, title, amount, date, category, description, type} = item;
+                            // console.log(expense)
+                            return <IncomeItem
+                                key={_id}
+                                id={_id} 
+                                title={title} 
+                                description={description} 
+                                amount={amount} 
+                                date={date} 
+                                type={type}
+                                category={category} 
+                                // indicatorColor="var(--color-green)"
+                                deleteItem={type === 'expense' ? deleteExpense : deleteIncome}
+                            />
+                        })}
                     </div>
-                )
-            })}
-        </HistoryStyled>
-    )
-}
+                </HistoryStyled> 
+                    
+                )}
+    // return (
+    //     <HistoryStyled>
+    //         <h2>Recent History</h2>
+    //         {history.map((item) =>{
+    //             // const {_id, title, amount, type} = item
+    //             const {_id, title, amount, date, category, description, type} = item;
+
+    //             return (
+    //                 <div key={_id} className="history-item">
+    //                     <p style={{
+    //                         color: type === 'expense' ? 'red' : 'var(--color-green)'
+    //                     }}>
+    //                         {title}
+    //                     </p>
+
+    //                     <p style={{
+    //                         color: type === 'expense' ? 'red' : 'var(--color-green)'
+    //                     }}>
+    //                         {
+    //                             type === 'expense' ? `-${amount <= 0 ? 0 : amount}` : `+${amount <= 0 ? 0: amount}`
+    //                         }
+    //                     </p>
+    //                 </div>
+    //             )
+    //         })}
+    //     </HistoryStyled>
+    // )
+
 
 const HistoryStyled = styled.div`
     display: flex;
@@ -48,6 +83,9 @@ const HistoryStyled = styled.div`
         justify-content: space-between;
         align-items: center;
         width:150%
+    }
+    .info{
+        width:125%;
     }
 `;
 

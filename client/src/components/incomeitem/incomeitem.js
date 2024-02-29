@@ -70,12 +70,20 @@ function IncomeItem({
                 {type === 'expense' ? expenseCatIcon() : categoryIcon()}
             </div>
             <div className="content">
-                <h5>{title}</h5>
+                <h5 style={{
+                             color: type === 'expense' ? 'red' : 'var(--color-green)'
+                         }}>{title}</h5>
                 <div className="inner-content">
                     <div className="text">
-                        <p>{rupee} {amount}</p>
-                        <p>{calender} {dateFormat(date)}</p>
-                        <p>
+                        <p  style={{
+                             color: type === 'expense' ? 'red' : 'var(--color-green)'
+                         }} >{rupee} {amount}</p>
+                        <p style={{
+                             color: type === 'expense' ? 'red' : 'var(--color-green)'
+                         }}>{calender} {dateFormat(date)}</p>
+                        <p style={{
+                             color: type === 'expense' ? 'red' : 'var(--color-green)'
+                         }}>
                             {comment}
                             {description}
                         </p>
@@ -155,6 +163,7 @@ const IncomeItemStyled = styled.div`
                 align-items: center;
                 gap: 1.5rem;
                 p{
+                    
                     display: flex;
                     align-items: center;
                     gap: 0.5rem;
